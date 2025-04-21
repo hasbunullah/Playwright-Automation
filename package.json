@@ -4,9 +4,11 @@
   "main": "index.js",
   "scripts": {
     "test": "npx playwright test",
+    "delte:allure-results": "rm -rf allure-results",
+    "delte:allure-report": "rm -rf allure-report",
     "allure:generate": "allure generate allure-results --clean -o allure-report",
     "allure:open": "allure open allure-report",
-    "allure:report": "npm run allure:generate && npm run allure:open"
+    "allure:report": "npm run delte:allure-report && npm run allure:generate && npm run allure:open"
   },
   "keywords": [],
   "author": "",
