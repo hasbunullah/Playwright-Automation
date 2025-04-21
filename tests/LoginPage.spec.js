@@ -8,7 +8,7 @@ test('Verify that user can create an account', async ({ page }) => {
     const loginPage = new LoginPage(page);
     const randomEmail = faker.internet.email();
     await loginPage.goto();
-    await loginPage.createAccount('hamid', 'Hussain', randomEmail);
+    await loginPage.createAccount('Hamid', 'Hussain', randomEmail);
     await expect(page).toHaveURL('https://sfcc.petfoodking.com/account?registration=submitted');
     console.log('The email is: ', randomEmail);
 

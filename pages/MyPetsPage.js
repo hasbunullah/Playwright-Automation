@@ -14,6 +14,10 @@ class MyPetsPage {
         this.threeDots = page.locator("[data-name='Somii'] .text")
         this.deleteButton = page.locator('.delete-confirmation-btn')
         this.breed= page.locator('#dog-breed');
+        this.uploadImage= page.locator('#load-img-pet-');
+        this.uploadedImage= page.locator('#imagePet');
+        this.myPets = page.locator("[href='/my-pets']");
+
     }
 
     async addPet(){
@@ -36,6 +40,20 @@ class MyPetsPage {
         await this.threeDots.click();
         await this.deleteButton.click();
     }
+
+    async myPetsPage(){
+        await this.myPets.click();
+
+        }
+
+    async uploadPetImage(){
+
+        await this.addPetbtn.click();
+        await this.uploadImage.setInputFiles('dog.jpg');
+    }    
+
+
+
 
 }
 module.exports = { MyPetsPage };

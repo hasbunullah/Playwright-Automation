@@ -5,7 +5,8 @@ class HomePage {
     this.page = page;
     this.searchInput = page.locator('#search-results');
     this.shopNowBtn = page.locator('a.btn-primary.shop-now-btn')
-    this.productName= page.getByRole('link', { name: 'Apoquel Tablet Rx' })
+    this.productName= page.getByRole('link', { name: 'Apoquel Tablet Rx' });
+    this.myAccountMenu = page.locator('#myaccount')
     
     }
 
@@ -19,9 +20,8 @@ class HomePage {
     await this.shopNowBtn.click();
     }
 
-    async myAccountMenu(){
-    await this.page.hover('#myaccount .btn .user-text');
-    await this.page.locator("[href='/my-pets']").click();
+    async myAccount(){
+    await this.myAccountMenu.click();
     }
 
 }
