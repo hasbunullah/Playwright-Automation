@@ -2,6 +2,7 @@ const { expect, test } = require('@playwright/test');
 const { LoginPage } = require('../pages/LoginPage');
 const { HomePage } = require('../pages/HomePage');
 const { CartPage } = require('../pages/CartPage');
+const data = require('../jsonData/data.json');
 
 
 
@@ -13,7 +14,7 @@ test('Verify the product is added to the cart', async ({ page}) => {
   await loginPage.goto();
   await loginPage.login(process.env.USER_EMAIL, process.env.USER_PASSWORD);
   await page.waitForTimeout(8000);
-  await homePage.searchItem('49755');
+  await homePage.searchItem(data.search.itemID);
   await homePage.selectItem();
   await cartPage.addItemToCart();
   const getCartValue = await page.locator('.product-name').textContent();
@@ -29,7 +30,7 @@ test.skip('Verify that the sum of the product price is correct', async ({ page }
   await loginPage.goto();
   await loginPage.login(process.env.USER_EMAIL, process.env.USER_PASSWORD);
   await page.waitForTimeout(8000);
-  await homePage.searchItem('49755');
+  await homePage.searchItem(data.search.itemID);
   await homePage.selectItem();
   await cartPage.addItemToCart();
   await page.waitForTimeout(3000);

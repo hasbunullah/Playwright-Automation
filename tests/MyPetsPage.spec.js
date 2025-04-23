@@ -3,6 +3,7 @@ const { test, expect } = require('@playwright/test');
 const { LoginPage } = require('../pages/LoginPage');
 const { HomePage } = require('../pages/HomePage');
 const { MyPetsPage } = require('../pages/MyPetsPage');
+const data = require('../jsonData/data.json');
 
 
 test('Verify that the user can add a pet', async ({ page }) => {
@@ -17,7 +18,7 @@ test('Verify that the user can add a pet', async ({ page }) => {
     await petsPage.myPetsPage();
     await petsPage.addPet();
     const pageText = await page.innerText('body');
-    expect(pageText).toContain('Somii');
+    expect(pageText).toContain(data.petData.petName);
     
 });
 
@@ -34,7 +35,7 @@ test('Verify that the user can Remove a pet', async ({ page}) => {
     await petsPage.removePet();
     await page.waitForTimeout(3000); // Wait for 3 seconds
     const pageText = await page.innerText('body');
-    expect(pageText).not.toContain('Somii');
+    expect(pageText).not.toContain(data.petData.petName);
 });
 
 test('Verify that user can upload the pet image', async ({ page }) => {

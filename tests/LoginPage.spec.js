@@ -2,13 +2,14 @@ require('dotenv').config();
 const { expect, test } = require("@playwright/test");
 const { faker } = require('@faker-js/faker');
 const { LoginPage } = require('../pages/LoginPage');
+const data = require('../jsonData/data.json');
 
 test('Verify that user can create an account', async ({ page }) => {
     
     const loginPage = new LoginPage(page);
     const randomEmail = faker.internet.email();
     await loginPage.goto();
-    await loginPage.createAccount('Hamid', 'Hussain', randomEmail);
+    await loginPage.createAccount(data.userData.userFirstName, data.userData.userLastName, randomEmail);
     await expect(page).toHaveURL('https://sfcc.petfoodking.com/account?registration=submitted');
     console.log('The email is: ', randomEmail);
 
