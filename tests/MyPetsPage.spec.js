@@ -13,7 +13,8 @@ test('Verify that the user can add a pet', async ({ page }) => {
     await loginPage.goto();
     await loginPage.login(process.env.USER_EMAIL, process.env.USER_PASSWORD);
     await expect(page).toHaveURL('/account?registration=false');
-    await homePage.myAccountMenu();
+    await homePage.myAccount();
+    await petsPage.myPetsPage();
     await petsPage.addPet();
     const pageText = await page.innerText('body');
     expect(pageText).toContain('Somii');
@@ -28,7 +29,8 @@ test('Verify that the user can Remove a pet', async ({ page}) => {
     await loginPage.goto();
     await loginPage.login(process.env.USER_EMAIL, process.env.USER_PASSWORD);
     await expect(page).toHaveURL('/account?registration=false');
-    await homePage.myPetsPage();
+    await homePage.myAccount();
+    await petsPage.myPetsPage();
     await petsPage.removePet();
     await page.waitForTimeout(3000); // Wait for 3 seconds
     const pageText = await page.innerText('body');

@@ -43,7 +43,6 @@ class MyPetsPage {
 
     async myPetsPage(){
         await this.myPets.click();
-
         }
 
     async uploadPetImage(){
@@ -51,9 +50,5 @@ class MyPetsPage {
         await this.addPetbtn.click();
         await this.uploadImage.setInputFiles('dog.jpg');
     }    
-
-
-
-
 }
 module.exports = { MyPetsPage };
